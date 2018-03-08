@@ -11,7 +11,7 @@
   },
   "require": {
     "php": ">=7.0",
-    "shaoyugong/cdkey-client": "dev-master"
+    "cdkey-client": "dev-master"
   },
   "authors": [
     { "name": "joey", "email": "gongshaoyu@xindong.com" }
