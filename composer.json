@@ -1,0 +1,19 @@
+{
+  "name": "cdkey/client",
+  "description": "CDKey Client",
+  "autoload": {
+    "psr-4": {
+      "cdkey\\client\\": "src/"
+    }
+  },
+  "config": {
+    "preferred-install": "source"
+  },
+  "require": {
+    "php": ">=7.0",
+    "shaoyugong/cdkey-client": "dev-master"
+  },
+  "authors": [
+    { "name": "joey", "email": "gongshaoyu@xindong.com" }
+  ]
+}
