@@ -10,8 +10,7 @@
     "preferred-install": "source"
   },
   "require": {
-    "php": ">=7.0",
-    "cdkey-client": "dev-master"
+    "php": ">=7.0"
   },
   "authors": [
     { "name": "joey", "email": "gongshaoyu@xindong.com" }
