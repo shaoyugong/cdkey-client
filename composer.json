@@ -3,7 +3,7 @@
   "description": "CDKey Client",
   "autoload": {
     "psr-4": {
-      "cdkey\\client\\": "src/"
+      "CdkeyClient\\": "src/"
     }
   },
   "config": {
@@ -13,6 +13,6 @@
     "php": ">=7.0"
   },
   "authors": [
-    { "name": "joey", "email": "gongshaoyu@xindong.com" }
+    { "name": "joey", "email": "gongshaoyu@xindong.com"}
   ]
 }
