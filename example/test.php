@@ -1,13 +1,8 @@
 <?php
 
-require "../src/ApiFactory.php";
-require "../src/Curl.php";
-require "../src/CurlResponse.php";
-require "../src/HttpApi.php";
-
 try
 {
-    $test = \CdkeyClient\ApiFactory::getInstance('lqwy', 'console', 'http://127.0.0.1:9899/api/', 'lqwy');
+    $test = \ApiFactory::getInstance('lqwy', 'console', 'http://127.0.0.1:9899/api/', 'lqwy');
     $doRequest = $test->createGiftbag([
         'name'                => '100cdkey',
         'items'               => 'test100',
@@ -29,3 +24,4 @@ try
 } catch (Exception $e) {
     echo json_encode(['status' => false, 'msg' => 'inner error']);
 }
+

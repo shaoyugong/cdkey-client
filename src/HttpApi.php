@@ -5,9 +5,10 @@
  * Date: 2018/3/8
  * Time: 下午12:22
  */
+
 namespace CdkeyClient;
 
-class HttpApi extends Curl
+abstract class HttpApi extends Curl
 {
     /**
      * 接口地址
@@ -35,29 +36,18 @@ class HttpApi extends Curl
     }
 
     /**
-     * 获取url地址
-     * @param string $action
+     * @param $action
      * @param array $data
-     * @return string
+     * @return mixed
      */
-    public function getUrl($action, $data = [])
-    {
-        $time = time();
-        $data['time'] = $time;
-        $data['sign'] = $this->doSign($time, $this->token);
-        return $this->host . '/' . $action . '?' . http_build_query($data);
-    }
+    abstract function url($action, $data = []);
 
     /**
-     * 计算接口sign
-     * @param int $time
-     * @param string $token
-     * @return string
+     * @param $time
+     * @param $token
+     * @return mixed
      */
-    public function doSign($time, $token)
-    {
-        return md5($time . $token);
-    }
+    abstract function sign($time, $token);
 
     /**
      * 创建礼包
@@ -66,7 +56,7 @@ class HttpApi extends Curl
      */
     public function createGiftbag($data)
     {
-        $url = $this->getUrl("giftbag/add");
+        $url = $this->url("giftbag/add");
         return $this->post($url, $data);
     }
 
@@ -77,7 +67,7 @@ class HttpApi extends Curl
      */
     public function updateGiftbag($data)
     {
-        $url = $this->getUrl("giftbag/edit");
+        $url = $this->url("giftbag/edit");
         return $this->post($url, $data);
     }
 
@@ -88,7 +78,7 @@ class HttpApi extends Curl
      */
     public function giftbagList($data = [])
     {
-        $url = $this->getUrl('giftbag/list', $data);
+        $url = $this->url('giftbag/list', $data);
         return $this->get($url, $data);
     }
 
@@ -99,7 +89,7 @@ class HttpApi extends Curl
      */
     public function giftbagDetil($data)
     {
-        $url = $this->getUrl('giftbag/detail', $data);
+        $url = $this->url('giftbag/detail', $data);
         return $this->get($url, $data);
     }
 
@@ -110,7 +100,7 @@ class HttpApi extends Curl
      */
     public function increaseGiftbag($data)
     {
-        $url = $this->getUrl('giftbag/increase', $data);
+        $url = $this->url('giftbag/increase', $data);
         return $this->post($url, $data);
     }
 
@@ -121,7 +111,7 @@ class HttpApi extends Curl
      */
     public function receiveCdkey($data)
     {
-        $url = $this->getUrl('cdkey/receive', $data);
+        $url = $this->url('cdkey/receive', $data);
         return $this->post($url, $data);
     }
 
@@ -132,7 +122,7 @@ class HttpApi extends Curl
      */
     public function bandCdkey($data)
     {
-        $url = $this->getUrl('cdkey/band', $data);
+        $url = $this->url('cdkey/band', $data);
         return $this->post($url, $data);
     }
 
@@ -143,7 +133,7 @@ class HttpApi extends Curl
      */
     public function useCdkey($data)
     {
-        $url = $this->getUrl('cdkey/use', $data);
+        $url = $this->url('cdkey/use', $data);
         return $this->post($url, $data);
     }
 
@@ -154,7 +144,7 @@ class HttpApi extends Curl
      */
     public function cdkeyDetil($data)
     {
-        $url = $this->getUrl('cdkey/detail', $data);
+        $url = $this->url('cdkey/detail', $data);
         return $this->get($url, $data);
     }
 }
