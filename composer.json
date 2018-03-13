@@ -1,13 +1,12 @@
 {
   "name": "cdkey/client",
   "description": "CDKey Client",
+  "license": "MIT",
+  "type": "library",
   "autoload": {
     "psr-4": {
       "CdkeyClient\\": "src/"
     }
-  },
-  "config": {
-    "preferred-install": "source"
   },
   "require": {
     "php": ">=7.0"
