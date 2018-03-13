@@ -45,7 +45,7 @@ class HttpApi extends Curl
         $time = time();
         $data['time'] = $time;
         $data['sign'] = $this->doSign($time, $this->token);
-        return $this->host . '/' . $action . http_build_url($data);
+        return $this->host . '/' . $action . '?' . http_build_query($data);
     }
 
     /**
