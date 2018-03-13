@@ -25,7 +25,7 @@ class ApiFactory
      */
     public static function getInstance($project, $type, $host, $token)
     {
-        if (!self::$instance[$project][$type]) {
+        if (self::$instance[$project][$type]) {
             return self::$instance[$project][$type];
         }
 
