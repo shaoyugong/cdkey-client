@@ -46,13 +46,6 @@ class Curl
     public $referer;
 
     /**
-     * The user agent to send along with requests
-     *
-     * @var string
-     **/
-    public $user_agent;
-
-    /**
      * Stores an error string for the last request if one occurred
      *
      * @var string
@@ -70,14 +63,11 @@ class Curl
 
     /**
      * Initializes a Curl object
-     *
      * Sets the $cookie_file to "curl_cookie.txt" in the current directory
-     * Also sets the $user_agent to $_SERVER['HTTP_USER_AGENT'] if it exists, 'Curl/PHP '.PHP_VERSION.' (http://github.com/shuber/curl)' otherwise
      **/
     function __construct()
     {
         $this->cookie_file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'curl_cookie.txt';
-        $this->user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Curl/PHP ' . PHP_VERSION . ' (http://github.com/shuber/curl)';
     }
 
     /**
@@ -250,7 +240,6 @@ class Curl
         # Set some default CURL options
         curl_setopt($this->request, CURLOPT_HEADER, true);
         curl_setopt($this->request, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($this->request, CURLOPT_USERAGENT, $this->user_agent);
         if ($this->cookie_file) {
             curl_setopt($this->request, CURLOPT_COOKIEFILE, $this->cookie_file);
             curl_setopt($this->request, CURLOPT_COOKIEJAR, $this->cookie_file);
