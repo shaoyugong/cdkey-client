@@ -138,6 +138,28 @@ abstract class HttpApi extends Curl
     }
 
     /**
+     * 礼券列表
+     * @param $data
+     * @return CurlResponse
+     */
+    public function cdkeyList($data)
+    {
+        $url = $this->url('cdkey/list', $data);
+        return $this->get($url, $data);
+    }
+
+    /**
+     * 礼券下载
+     * @param $data
+     * @return CurlResponse
+     */
+    public function cdkeyDownload($data)
+    {
+        $url = $this->url('cdkey/download', $data);
+        return $this->get($url, $data);
+    }
+
+    /**
      * 礼券详情
      * @param $data
      * @return CurlResponse
