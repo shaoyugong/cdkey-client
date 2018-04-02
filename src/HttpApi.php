@@ -6,7 +6,7 @@
  * Time: 下午12:22
  */
 
-namespace CdkeyClient;
+use GuzzleHttp\Client;
 
 abstract class HttpApi extends Curl
 {
@@ -145,17 +145,6 @@ abstract class HttpApi extends Curl
     public function cdkeyList($data)
     {
         $url = $this->url('cdkey/list', $data);
-        return $this->get($url, $data);
-    }
-
-    /**
-     * 礼券下载
-     * @param $data
-     * @return CurlResponse
-     */
-    public function cdkeyDownload($data)
-    {
-        $url = $this->url('cdkey/download', $data);
         return $this->get($url, $data);
     }
 

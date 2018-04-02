@@ -225,6 +225,25 @@ class Curl
     }
 
     /**
+     * 设置需要发送的HTTP头信息
+     * @param array /string 需要设置的头信息，可以是一个 类似 array('Host: example.com', 'Accept-Language: zh-cn') 的头信息数组
+     *       或单一的一条类似于 'Host: example.com' 头信息字符串
+     * @return void
+     */
+    public function setHeader($header){
+        if (emptyempty($header)) {
+            return;
+        }
+        if (is_array($header)) {
+            foreach ($header as $k => $v) {
+                $this->headers[] = is_numeric($k) ? trim($v) : (trim($k) . ": " . trim($v));
+            }
+        } elseif (is_string($header)) {
+            $this->headers[] = $header;
+        }
+    }
+
+    /**
      * Sets the CURLOPT options for the current request
      *
      * @param string $url
