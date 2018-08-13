@@ -6,7 +6,7 @@
  * Time: 下午12:22
  */
 
-use GuzzleHttp\Client;
+namespace CdkeyClient;
 
 abstract class HttpApi extends Curl
 {
@@ -52,7 +52,7 @@ abstract class HttpApi extends Curl
     /**
      * 创建礼包
      * @param $data
-     * @return bool|CurlResponse
+     * @return CurlResponse
      */
     public function createGiftbag($data)
     {
@@ -63,7 +63,7 @@ abstract class HttpApi extends Curl
     /**
      * 更新礼包信息
      * @param $data
-     * @return bool|CurlResponse
+     * @return CurlResponse
      */
     public function updateGiftbag($data)
     {
@@ -72,7 +72,7 @@ abstract class HttpApi extends Curl
     }
 
     /**
-     * 查询礼包列表
+     * 查询礼包
      * @param array $data
      * @return CurlResponse
      */
@@ -100,40 +100,29 @@ abstract class HttpApi extends Curl
      */
     public function increaseGiftbag($data)
     {
-        $url = $this->url('giftbag/increase', $data);
+        $url = $this->url('giftbag/increase');
         return $this->post($url, $data);
     }
 
     /**
      * 领取礼券
      * @param $data
-     * @return bool|CurlResponse
+     * @return CurlResponse
      */
     public function receiveCdkey($data)
     {
-        $url = $this->url('cdkey/receive', $data);
-        return $this->post($url, $data);
-    }
-
-    /**
-     * 绑定礼券
-     * @param $data
-     * @return bool|CurlResponse
-     */
-    public function bandCdkey($data)
-    {
-        $url = $this->url('cdkey/band', $data);
+        $url = $this->url('cdkey/receive');
         return $this->post($url, $data);
     }
 
     /**
      * 使用礼券
      * @param $data
-     * @return bool|CurlResponse
+     * @return CurlResponse
      */
     public function useCdkey($data)
     {
-        $url = $this->url('cdkey/use', $data);
+        $url = $this->url('cdkey/use');
         return $this->post($url, $data);
     }
 
