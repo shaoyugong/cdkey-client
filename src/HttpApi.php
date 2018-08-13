@@ -36,6 +36,7 @@ abstract class HttpApi extends Curl
     }
 
     /**
+     * url地址
      * @param $action
      * @param array $data
      * @return mixed
@@ -43,6 +44,7 @@ abstract class HttpApi extends Curl
     abstract function url($action, $data = []);
 
     /**
+     * sign验证
      * @param $time
      * @param $token
      * @return mixed
