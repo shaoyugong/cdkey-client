@@ -2,26 +2,25 @@
 
 try
 {
-    $test = \ApiFactory::getInstance('lqwy', 'console', 'http://127.0.0.1:9899/api/', 'lqwy');
-    $doRequest = $test->createGiftbag([
-        'name'                => '100cdkey',
-        'items'               => 'test100',
-        'type'                => 12,
-        'produce_count'       => 100,
-        'create_admin_id'     => 1,
-        'start_time'          => 1517155200,
-        'end_time'            => 1543593600,
-        'receive_only_once'   => 1,
-        'band_only_once'      => 1,
-        'use_only_once'       => 1,
-        'code_auto_produce'   => 1,
-        'receive_produce'     => 1,
-        'receive_random_gift' => 1,
-        'status'              => 1,
-    ]);
+    $config = [
+        "host"  => "http://127.0.0.1:9899",
+        "token" => "123456",
+    ];
+    $where = [
+        "limit"  => 100,
+        "offset" => 0,
+        "time"   => 1534213778,
+        "sign"   => "84ff37b35072b0293aa7ed7f67b25c64",
+    ];
 
-    echo $doRequest;
+    $doQuery = \Apifactory::getInstance($config)->giftbagList($where);
+    $data    = json_decode($doQuery->body, true);
+
+    if (200 != $doQuery->headers['Status-Code'] || true !== $data['status']) {
+        throw new Exception($data['msg'] ? $data['msg'] : __('request failed'));
+    }
+
+    echo json_encode($data);
 } catch (Exception $e) {
-    echo json_encode(['status' => false, 'msg' => 'inner error']);
+    echo json_encode(['status' => false, 'msg' => $e->getCode()]);
 }
-

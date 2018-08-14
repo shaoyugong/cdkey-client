@@ -1,7 +1,7 @@
 <?php
 use \CdkeyClient\HttpApi;
 
-class ConsoleApi extends HttpApi
+class PublicApi extends HttpApi
 {
     /**
      * 获取url地址
