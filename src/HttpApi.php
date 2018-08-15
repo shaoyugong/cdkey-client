@@ -47,6 +47,7 @@ abstract class HttpApi extends Curl
      * sign验证
      * @param $time
      * @param $token
+     * @param array $data
      * @return mixed
      */
     abstract function sign($time, $token, $data = []);
