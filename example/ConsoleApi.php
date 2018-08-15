@@ -5,11 +5,12 @@ class ConsoleApi extends HttpApi
 {
     /**
      * 获取url地址
-     * @param string $action
+     * @param $action
+     * @param $type
      * @param array $data
-     * @return string
+     * @return mixed|string
      */
-    public function url($action, $data = [])
+    public function url($action, $type, $data = [])
     {
         $time = time();
         $sign = $this->sign($time, $this->token, $data);
@@ -17,11 +18,13 @@ class ConsoleApi extends HttpApi
         $data['sign'] = $sign;
         return $this->host . '/' . $action . '?' . http_build_query($data);
     }
+
     /**
      * 计算接口sign
-     * @param int $time
-     * @param string $token
-     * @return string
+     * @param $time
+     * @param $token
+     * @param array $data
+     * @return mixed|string
      */
     public function sign($time, $token, $data = [])
     {

@@ -10,6 +10,9 @@ namespace CdkeyClient;
 
 abstract class HttpApi extends Curl
 {
+    const METHOD_GET  = 0;
+    const METHOD_POST = 1;
+
     /**
      * 接口地址
      * @var string
@@ -41,7 +44,7 @@ abstract class HttpApi extends Curl
      * @param array $data
      * @return mixed
      */
-    abstract function url($action, $data = []);
+    abstract function url($action, $type, $data = []);
 
     /**
      * sign验证
@@ -59,7 +62,7 @@ abstract class HttpApi extends Curl
      */
     public function createGiftbag($data)
     {
-        $url = $this->url("giftbag/add");
+        $url = $this->url("giftbag/add", self::METHOD_POST, $data);
         return $this->post($url, $data);
     }
 
@@ -70,7 +73,7 @@ abstract class HttpApi extends Curl
      */
     public function updateGiftbag($data)
     {
-        $url = $this->url("giftbag/edit");
+        $url = $this->url("giftbag/edit", self::METHOD_POST, $data);
         return $this->post($url, $data);
     }
 
@@ -81,7 +84,7 @@ abstract class HttpApi extends Curl
      */
     public function giftbagList($data = [])
     {
-        $url = $this->url('giftbag/list', $data);
+        $url = $this->url('giftbag/list', self::METHOD_GET, $data);
         return $this->get($url, $data);
     }
 
@@ -92,7 +95,7 @@ abstract class HttpApi extends Curl
      */
     public function giftbagDetil($data)
     {
-        $url = $this->url('giftbag/detail', $data);
+        $url = $this->url('giftbag/detail', self::METHOD_GET, $data);
         return $this->get($url, $data);
     }
 
@@ -103,7 +106,7 @@ abstract class HttpApi extends Curl
      */
     public function increaseGiftbag($data)
     {
-        $url = $this->url('giftbag/increase');
+        $url = $this->url('giftbag/increase', self::METHOD_POST, $data);
         return $this->post($url, $data);
     }
 
@@ -114,7 +117,7 @@ abstract class HttpApi extends Curl
      */
     public function receiveCdkey($data)
     {
-        $url = $this->url('cdkey/receive');
+        $url = $this->url('cdkey/receive', self::METHOD_POST, $data);
         return $this->post($url, $data);
     }
 
@@ -125,7 +128,7 @@ abstract class HttpApi extends Curl
      */
     public function useCdkey($data)
     {
-        $url = $this->url('cdkey/use');
+        $url = $this->url('cdkey/use', self::METHOD_POST, $data);
         return $this->post($url, $data);
     }
 
@@ -136,7 +139,7 @@ abstract class HttpApi extends Curl
      */
     public function cdkeyList($data)
     {
-        $url = $this->url('cdkey/list', $data);
+        $url = $this->url('cdkey/list', self::METHOD_GET, $data);
         return $this->get($url, $data);
     }
 
@@ -147,7 +150,7 @@ abstract class HttpApi extends Curl
      */
     public function cdkeyDetil($data)
     {
-        $url = $this->url('cdkey/detail', $data);
+        $url = $this->url('cdkey/detail', self::METHOD_GET, $data);
         return $this->get($url, $data);
     }
 }

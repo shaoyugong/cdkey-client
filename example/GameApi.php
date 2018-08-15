@@ -5,17 +5,30 @@ class GameApi extends HttpApi
 {
     /**
      * 获取url地址
-     * @param string $action
+     * @param $action
+     * @param $type
      * @param array $data
-     * @return string
+     * @return mixed|string
      */
-    public function url($action, $data = [])
+    public function url($action, $type, $data = [])
     {
-        $time = time();
-        $sign = $this->sign($time, $this->token, $data);
-        $data['time'] = $time;
-        $data['sign'] = $sign;
-        return $this->host . '/' . $action . '?' . http_build_query($data);
+        $time  = time();
+        $query = "";
+        
+        switch ($type) {
+            case HttpApi::METHOD_GET:
+                $sign  = $this->sign($time, $this->token);
+                $query = $data;
+                $query['time'] = $time;
+                $query['sign'] = $sign;
+                break;
+            case HttpApi::METHOD_POST:
+                $sign  = $this->sign($time, $this->token, $data);
+                $query = ['time' => $time, 'sign' => $sign];
+                break;
+        }
+
+        return $this->host . '/' . $action . '?' . http_build_query($query);
     }
 
     /**
@@ -27,6 +40,7 @@ class GameApi extends HttpApi
      */
     public function sign($time, $token, $data = [])
     {
-        return md5($time . $token);
+        $signStr = (is_array($data) && $data) ? implode("", $data) : "";
+        return md5($signStr . $time . $token);
     }
 }
