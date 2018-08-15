@@ -49,7 +49,7 @@ abstract class HttpApi extends Curl
      * @param $token
      * @return mixed
      */
-    abstract function sign($time, $token);
+    abstract function sign($time, $token, $data = []);
 
     /**
      * 创建礼包

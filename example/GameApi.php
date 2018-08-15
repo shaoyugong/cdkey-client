@@ -12,17 +12,20 @@ class GameApi extends HttpApi
     public function url($action, $data = [])
     {
         $time = time();
+        $sign = $this->sign($time, $this->token, $data);
         $data['time'] = $time;
-        $data['sign'] = $this->sign($time, $this->token);
+        $data['sign'] = $sign;
         return $this->host . '/' . $action . '?' . http_build_query($data);
     }
+
     /**
      * 计算接口sign
-     * @param int $time
-     * @param string $token
-     * @return string
+     * @param $time
+     * @param $token
+     * @param array $data
+     * @return mixed|string
      */
-    public function sign($time, $token)
+    public function sign($time, $token, $data = [])
     {
         return md5($time . $token);
     }
