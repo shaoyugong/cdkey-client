@@ -1,6 +1,30 @@
 # 服务说明
+兑换码服务客户端
 
-# API接口
+## 安装
+
+### composer配置
+```
+{
+  "autoload": {
+    "psr-4": {
+      "CdkeyClient\\": "src/"
+    }
+  },
+  
+  "require": {
+    "cdkey/client": "^1.0.1"
+  },
+}
+```
+
+### 执行命令安装
+`composer install`
+
+### 调用方法
+请查看example文件夹
+
+# 业务API接口
 
 ## 1.通讯协议
 http
