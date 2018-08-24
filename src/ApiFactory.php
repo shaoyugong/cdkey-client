@@ -1,5 +1,5 @@
 <?php
-use CdkeyClient\HttpApi;
+namespace CdkeyClient;
 
 class Apifactory
 {
@@ -20,10 +20,10 @@ class Apifactory
 
     /**
      * 生成api对象
-     * @param $type
      * @param $config
-     * @return bool|ConsoleApi|GameApi|PublicApi
-     * @throws Exception
+     * @param int $type
+     * @return ConsoleApi|GameApi|PublicApi
+     * @throws \Exception
      */
     public static function getInstance($config, $type = self::API_PUBLIC)
     {
@@ -32,7 +32,7 @@ class Apifactory
         }
 
         if (!$config['host'] || !$config['token']) {
-            throw new Exception('缺少接口配置');
+            throw new \Exception('缺少接口配置');
         }
 
         switch ($type) {
@@ -46,11 +46,11 @@ class Apifactory
                 $httpApi = new PublicApi($config['host'], $config['token']);
                 break;
             default:
-                throw new Exception('无相关类型接口');
+                throw new \Exception('无相关类型接口');
         }
 
         if (!$httpApi instanceof HttpApi) {
-            throw new Exception('该类未继承HTTP接口类HttpApi，请检查');
+            throw new \Exception('该类未继承HTTP接口类HttpApi，请检查');
         }
 
         self::$instance[$type] = $httpApi;

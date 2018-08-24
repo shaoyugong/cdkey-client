@@ -1,5 +1,5 @@
 <?php
-use \CdkeyClient\HttpApi;
+namespace CdkeyClient;
 
 class PublicApi extends HttpApi
 {

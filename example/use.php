@@ -1,4 +1,5 @@
 <?php
+use CdkeyClient\Apifactory;
 
 try
 {
@@ -7,13 +8,11 @@ try
         "token" => "123456",
     ];
     $where = [
-        "limit"  => 100,
-        "offset" => 0,
-        "time"   => 1534213778,
-        "sign"   => "84ff37b35072b0293aa7ed7f67b25c64",
+        "code" => "OWEURIO123",
+        "pid"  => 123,
     ];
 
-    $doQuery = \Apifactory::getInstance($config)->giftbagList($where);
+    $doQuery = Apifactory::getInstance($config)->useCdkey($where);
     $data    = json_decode($doQuery->body, true);
 
     if (200 != $doQuery->headers['Status-Code'] || true !== $data['status']) {
