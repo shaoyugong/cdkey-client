@@ -16,7 +16,7 @@ class Apifactory
      * api对象
      * @var object
      */
-    private static $instance = [];
+    public static $instance = [];
 
     /**
      * 生成api对象
