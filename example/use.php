@@ -12,6 +12,7 @@ try
         "pid"  => 123,
     ];
 
+    // 使用兑换码接口
     $doQuery = Apifactory::getInstance($config)->useCdkey($where);
     $data    = json_decode($doQuery->body, true);
 

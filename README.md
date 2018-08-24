@@ -3,7 +3,7 @@
 
 ## 安装
 
-### composer配置
+### composer.json配置文件
 ```
 {
   "autoload": {
