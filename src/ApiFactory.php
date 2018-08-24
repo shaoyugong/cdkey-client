@@ -1,7 +1,7 @@
 <?php
 namespace CdkeyClient;
 
-class Apifactory
+class ApiFactory
 {
     // 后台接口类型
     const API_CONSOLE = 1;
