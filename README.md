@@ -57,6 +57,14 @@ token: `xdapp.com`
 
 curl测试命令:`curl -d "code=GB&pid=123456" "http://47.100.189.18:10004/api/cdkey/receive?time=1517539152&sign=3c031ee08db6270190e1fc9646b6aa8e"`
 
+返回信息:
+
+| 参数 | 类型 | 描述 |
+| :--- | :--- | :--- |
+| status | bool | 状态(true:成功,false:失败) |
+| msg | string | 消息 |
+| data | string | 兑换码 |
+
 ### 3.2使用礼券
 方式：`POST`
 
@@ -70,3 +78,10 @@ curl测试命令:`curl -d "code=GB&pid=123456" "http://47.100.189.18:10004/api/c
 | pid | int | 是 | 角色id |
 
 curl测试命令:`curl -d "code=009AHB03W7GT&pid=123456" "http://47.100.189.18:10004/api/cdkey/use?time=1517539152&sign=3c031ee08db6270190e1fc9646b6aa8e"`
+
+返回信息:
+
+| 参数 | 类型 | 描述 |
+| :--- | :--- | :--- |
+| status | bool | 状态(true:成功,false:失败) |
+| msg | string | 消息 |
