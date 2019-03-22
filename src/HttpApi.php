@@ -100,6 +100,17 @@ abstract class HttpApi extends Curl
     }
 
     /**
+     * 删除礼包
+     * @param $data
+     * @return bool|CurlResponse
+     */
+    public function deleteGiftbag($data)
+    {
+        $url = $this->url("giftbag/delete", self::METHOD_POST, $data);
+        return $this->post($url, $data);
+    }
+
+    /**
      * 礼包追加礼券
      * @param $data
      * @return CurlResponse
